@@ -9,10 +9,7 @@ services:
       - termix_internal
       - caddy-1_caddy_net
     volumes:
-      - type: volume
-        source: termix_data
-        target: /app/data
-        volume: {}
+      - termix_data:/app/data
     environment:
       PORT: "8080"
 
