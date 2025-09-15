@@ -18,10 +18,11 @@ services:
 
 volumes:
   termix-data:
-    driver_opts:
-      type: "nfs"
-      o: ${TERMIX_NFS_PATH}
-      device: ${TERMIX_NFS_DEVICE_DATA}
+      name: termix_termix_data
+      driver_opts:
+        type: "nfs"
+        o: ${TERMIX_NFS_PATH}
+        device: ${TERMIX_NFS_DEVICE_DATA}
 
 networks:
   termix_internal:
