@@ -10,14 +10,14 @@ services:
       - caddy-1_caddy_net
     volumes:
       - type: volume
-        source: termix-data
+        source: termix_data
         target: /app/data
         volume: {}
     environment:
       PORT: "8080"
 
 volumes:
-  termix-data:
+  termix_data:
       name: termix_termix_data
       driver_opts:
         type: "nfs"
