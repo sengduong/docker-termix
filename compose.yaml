@@ -3,8 +3,11 @@ services:
     image: ghcr.io/lukegus/termix:latest
     container_name: termix
     restart: unless-stopped
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
+    networks:
+      - termix_internal
+      - caddy-1_caddy_net
     volumes:
       - termix-data:/app/data
     environment:
@@ -12,4 +15,12 @@ services:
 
 volumes:
   termix-data:
-    driver: local
+    driver_opts:
+      type: "nfs"
+      o: ${TERMIX_NFS_PATH}
+      device: ${TERMIX_NFS_DEVICE_DATA}
+
+networks:
+  termix_internal:
+  caddy-1_caddy_net:
+    external: true
